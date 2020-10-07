@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Login = () => {
+const Table = () => {
   return (
     <>
     </>
   );
 }
 
-export default Login;
+export default Table;

@@ -1,10 +1,10 @@
 import React from 'react';
 import MiniDrawer from '../components/MiniDrawer';
 
-const Dashboard = () => {
+const Portal = () => {
   return (
     <MiniDrawer />
   );
 }
 
-export default Dashboard;
+export default Portal;
