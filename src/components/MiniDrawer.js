@@ -17,7 +17,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 300;
 
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: drawerWidth,
+    height: 100,
     flexShrink: 0,
     whiteSpace: 'nowrap',
   },
@@ -81,13 +84,30 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  listItem: {
+    borderBottom:  '1px solid lightgrey',
+  },
+  selected: {
+    backgroundColor: 'lightgrey',
+  },
+  list: {
+    flexGrow: 1,
+    padding: 0,
+  },
+  logout: {
+    position: 'absolute',
+    bottom: 0,
+  }
 }));
 
 export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [item, setItem] = React.useState(0);
+  const handleSelectItem = (index) => {
+    setItem(index);
+  }
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -95,7 +115,20 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const chooseIcon = (index) => {
+    switch(index) {
+      case 0:
+        return <AssessmentIcon />
+      case 1:
+        return <PeopleIcon />
+      case 2:
+        return <AssignmentIcon />
+      case 3:
+        return <AccountBoxIcon />
+      default:
+        return null;
+    }
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -141,13 +174,23 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['Subscriber Count', 'Orders Processed', 'Weight (lb) Processed'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 3 === 0 ? <PeopleIcon /> : (index % 2) === 0 ? <FitnessCenterIcon /> : <AssessmentIcon/>}</ListItemIcon>
+        <List className={classes.list}>
+          {['Dashboard', 'User Table', 'Order Table', 'Subscription Table'].map((text, index) => (
+            <ListItem button key={text} className={`${classes.listItem} 
+                                                    ${index === item ? classes.selected : ""}`
+                                                  } onClick={() => handleSelectItem(index)}>
+              <ListItemIcon >
+                {chooseIcon(index)}
+              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
+          <ListItem button key={"Logout"} className={classes.logout}>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Logout"}/>
+          </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
