@@ -136,7 +136,7 @@ export default function MiniDrawer() {
         anchor="left"
       >
         <div className={`${classes.toolbar} ${classes.listHead}`}>
-          <img src="/logo.png" alt="logo" className={classes.logo}/>
+          <img src="/whiteLogo.png" alt="logo" className={classes.logo}/>
         </div>
         <Divider />
         <List className={classes.list}>
