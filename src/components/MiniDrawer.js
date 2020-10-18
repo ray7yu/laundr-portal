@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     backgroundColor: "F9F9F9",
+    height: '100%',
   },
   appBar: {
     minHeight: barHeight,
@@ -88,11 +89,11 @@ export default function MiniDrawer() {
       case 0:
         return <Dashboard />;
       case 1:
-        return <DataTable option={option}/>;
+        return <DataTable option="Users"/>;
       case 2:
-        return <DataTable option={option}/>;
+        return <DataTable option="Orders"/>;
       case 3:
-        return <DataTable option={option}/>;
+        return <DataTable option="Subscriptions"/>;
       default:
         return <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

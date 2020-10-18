@@ -164,7 +164,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Nutrition
+          {props.option}
         </Typography>
       )}
 
@@ -200,6 +200,10 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 750,
   },
+  // scrollable: {
+  //   maxHeight: 750,
+  //   overflow: 'auto',
+  // },
   visuallyHidden: {
     border: 0,
     clip: 'rect(0 0 0 0)',
@@ -277,9 +281,10 @@ export default function DataTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
+        <EnhancedTableToolbar numSelected={selected.length} option={props.option}/>
+        <TableContainer className={classes.scrollable}>
           <Table
+            stickyHeader
             className={classes.table}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
