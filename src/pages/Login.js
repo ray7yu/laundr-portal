@@ -1,9 +1,7 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -11,7 +9,7 @@ import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -33,9 +31,30 @@ const useStyles = makeStyles((theme) => ({
   login: {
     backgroundColor: "#F9F9F9",
   },
+  logo: {
+    width: '100%',
+  },
+  image: {
+    width: '15%',
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#FFB600'
   },
+  title: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '2.4em',
+    color: '#01C9E1',
+  },
+  admin: {
+    marginBottom: '14px',
+    marginStart: '5px',
+    fontFamily: 'Mulish',
+    fontWeight: '700',
+  }
 }));
 
 export default function Login() {
@@ -46,12 +65,14 @@ export default function Login() {
       <Container component="main" maxWidth="xs" className={classes.login}>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
+          <div className={classes.title}>
+            <div className={classes.image}>
+              <img src="/blueIcon.png" alt="logo" className={classes.logo}/>
+            </div>
+            <div className={classes.admin}>
+              Laundr Admin Login
+            </div>
+          </div>
           <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
@@ -79,10 +100,9 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
               className={classes.submit}
             >
-              Sign In
+              Login
             </Button>
           </form>
         </div>
