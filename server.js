@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const User = require('./models/user');
 const Order = require('./models/order');
 const Subscription = require('./models/subscription');
+const seedDB = require("./seeds"),
 const app = express();
 require('dotenv').config()
 
@@ -13,7 +14,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
-mongoose.connect(process.env.DATABASE_URL, {
+
+let url = process.env.DATABASEURL || "mongodb://localhost/laundrm"
+
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
@@ -26,6 +30,9 @@ app.get('/ping', function(req, res) {
     console.log("pong");
     return res.send('pong');
 });
+
+//seedDB()
+
 //POST routes
 app.post('/user', (req, res) => {
     console.log("TBD");
