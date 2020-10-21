@@ -18,8 +18,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import Dashboard from './Dashboard'
 import DataTable from './DataTable'
+import {userRows, orderRows, subscriptionRows} from './DummyData'
 
-const drawerWidth = 225;
+const drawerWidth = 175;
 const barHeight = 75;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,10 +54,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   listItem: {
     backgroundColor: theme.palette.background.default,
+  },
+  listItemIcon: {
+    display: 'inline-block',
+    minWidth: '45px',
   },
   selected: {
     backgroundColor: 'lightgrey',
@@ -89,11 +94,11 @@ export default function MiniDrawer() {
       case 0:
         return <Dashboard />;
       case 1:
-        return <DataTable option="Users"/>;
+        return <DataTable option="User Table" type="user" rows={userRows}/>;
       case 2:
-        return <DataTable option="Orders"/>;
+        return <DataTable option="Order Table" type="order" rows={orderRows}/>;
       case 3:
-        return <DataTable option="Subscriptions"/>;
+        return <DataTable option="Subscription Table" type="subscription" rows={subscriptionRows}/>;
       default:
         return <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -144,7 +149,7 @@ export default function MiniDrawer() {
             <ListItem button key={text} className={`${classes.listItem} 
                                                     ${index === item ? classes.selected : ""}`
                                                   } onClick={() => handleSelectItem(index)}>
-              <ListItemIcon >
+              <ListItemIcon className={classes.listItemIcon}>
                 {chooseIcon(index)}
               </ListItemIcon>
               <ListItemText primary={text} />
