@@ -19,11 +19,62 @@ import Switch from '@material-ui/core/Switch';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
 function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
+  if(a[orderBy] === undefined || b[orderBy] === undefined){
+    return 0;
   }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
+  if(orderBy === 'dateCreated' || orderBy === 'startDate' || orderBy === 'renewalDate'){
+    const dateA = a[orderBy].split('/');
+    const dateB = b[orderBy].split('/');
+    if (parseInt(dateB[2]) < parseInt(dateA[2])){
+      return -1;
+    } else if (parseInt(dateA[2]) < parseInt(dateB[2])){
+      return 1;
+    } else {
+      if (parseInt(dateB[0]) < parseInt(dateA[0])){
+        return -1;
+      } else if (parseInt(dateA[0]) < parseInt(dateB[0])){
+        return 1;
+      } else {
+        if (parseInt(dateB[1]) < parseInt(dateA[1])){
+          return -1;
+        } else if (parseInt(dateA[1]) < parseInt(dateB[1])){
+          return 1;
+        }
+      }
+    }
+  } else if(orderBy === 'pickupTime' || orderBy === 'deliveryTime'){
+    console.log(a[orderBy]);
+    const meridiemA = a[orderBy].slice(-2);
+    const meridiemB = b[orderBy].slice(-2);
+    let timeA = a[orderBy].slice(0, -2);
+    let timeB = b[orderBy].slice(0, -2);
+    //AM PM checks
+    if(timeA === '12'){
+      timeA = '0'
+    }
+    if(timeB === '12'){
+      timeB = '0'
+    }
+    if (meridiemB < meridiemA){
+      return -1;
+    } else if(meridiemA < meridiemB){
+      return 1;
+    } else {
+      if (parseInt(timeB) < parseInt(timeA)){
+        return -1;
+      } else if (parseInt(timeA) < parseInt(timeB)){
+        return 1;
+      }
+    }
+  } else {
+    if (b[orderBy] < a[orderBy]) {
+      //B is first
+      return -1;
+    }
+    if (b[orderBy] > a[orderBy]) {
+      //A is first
+      return 1;
+    }
   }
   return 0;
 }
@@ -53,7 +104,8 @@ const useHeadStyles = makeStyles((theme) => ({
     display: 'table-cell',
   },
   headEntry: {
-    color: 'grey'
+    color: 'grey',
+    backgroundColor: '#FAFAFA'
   }
 }));
 function EnhancedTableHead(props) {
@@ -66,7 +118,7 @@ function EnhancedTableHead(props) {
   switch(props.type){
     case 'user':
       headCells = [
-        { id: 'name', label: 'Username' },
+        { id: 'username', label: 'Username' },
         { id: 'email', label: 'Email' },
         { id: 'dateCreated', label: 'Account Created Date' },
       ]
@@ -74,7 +126,7 @@ function EnhancedTableHead(props) {
     case 'order':
       headCells = [
         { id: 'orderNumber', label: 'Order Number' },
-        { id: 'customerName', label: 'Customer Name' },
+        { id: 'customerID', label: 'Customer ID' },
         { id: 'pickupTime', label: 'Pickup Time' },
         { id: 'deliveryTime', label: 'Delivery Time' },
         { id: 'driverName', label: 'Driver Name' },
@@ -189,6 +241,28 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 750,
   },
+  odd: {
+    backgroundColor: '#FAFAFA',
+  },
+  status: {
+    width: '80%',
+    borderRadius: '25px',
+    textAlign: 'center',
+    padding: '3px',
+    color: 'white',
+  },
+  paid: {
+    backgroundColor: '#29CC97',
+  },
+  pending: {
+    backgroundColor: '#FFB600',
+  },
+  active: {
+    backgroundColor: '#29CC97',
+  },
+  inactive: {
+    backgroundColor: '#FF5A39'
+  },
   // scrollable: {
   //   maxHeight: 750,
   //   overflow: 'auto',
@@ -210,7 +284,7 @@ export default function DataTable(props) {
   const rows = props.rows;
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState(props.filler);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -236,12 +310,12 @@ export default function DataTable(props) {
   };
 
 
-  const handleType = (type, row, labelId) => {
+  const handleType = (type, row, labelId, classes) => {
     switch(type){
       case 'user':
         return (
           <>
-            <TableCell component="th" id={labelId} scope="row" padding="5px">
+            <TableCell component="th" id={labelId} scope="row">
               {row.username}
             </TableCell>
             <TableCell align="left">{row.email}</TableCell>
@@ -251,7 +325,7 @@ export default function DataTable(props) {
       case 'order':
         return (
           <>
-            <TableCell component="th" id={labelId} scope="row" padding="5px">
+            <TableCell component="th" id={labelId} scope="row" >
               {row.orderNumber}
             </TableCell>
             <TableCell align="left">{row.customerID}</TableCell>
@@ -260,13 +334,17 @@ export default function DataTable(props) {
             <TableCell align="left">{row.driverName}</TableCell>
             <TableCell align="left">{row.address}</TableCell>
             <TableCell align="left">{row.weight}</TableCell>
-            <TableCell align="left">{row.status}</TableCell>
+            <TableCell align="left">
+              <div className={`${classes.status} ${row.status === 'Paid' ? classes.paid : classes.pending}`}>
+                {row.status.toUpperCase()}
+              </div>
+            </TableCell>
           </>
         );
       case 'subscription':
         return (
           <>
-            <TableCell component="th" id={labelId} scope="row" padding="5px">
+            <TableCell component="th" id={labelId} scope="row" >
               {row.customerName}
             </TableCell>
             <TableCell align="left">{row.subscriptionType}</TableCell>
@@ -274,7 +352,11 @@ export default function DataTable(props) {
             <TableCell align="left">{row.renewalDate}</TableCell>
             <TableCell align="left">{row.maxLbs}</TableCell>
             <TableCell align="left">{row.currentLbs}</TableCell>
-            <TableCell align="left">{row.isActive}</TableCell>
+            <TableCell align="left">
+              <div className={`${classes.status} ${row.isActive === 'Active' ? classes.active : classes.inactive}`}>
+                {row.isActive.toUpperCase()}
+              </div>
+            </TableCell>
           </>
         );
       default:
@@ -314,16 +396,19 @@ export default function DataTable(props) {
 
                   return (
                     <TableRow
+                      key={index}
+                      role='none'
                       hover
                       tabIndex={-1}
-                      key={row.name}
+                      className={index % 2 === 1 ? classes.odd : ''}
                     >
-                      {handleType(props.type, row, labelId)}
+                      {handleType(props.type, row, labelId, classes)}
                     </TableRow>
                   );
                 })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
+                <TableRow 
+                  style={{ height: (dense ? 33 : 53) * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
