@@ -5,12 +5,21 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 export default function Toggle(props) {
     const [toggle, setToggle] = React.useState(props.start)
     const handleToggle = (event, type) => {
-        props.handleClick(type);
-        setToggle(type);
+        if(type != null){
+            setToggle(type);
+        }
+        // console.log(type);
     };
     React.useEffect(() => {
-        setToggle(props.start)
-    }, [props.start])
+        // console.log(props.start);
+        setToggle(props.start);
+    }, [props.type])
+    React.useEffect(() => {
+        if(toggle != null){
+            props.handleClick(toggle);
+        }
+        // console.log(toggle);
+    },[props.type, toggle])
     const chooseToggle = () => {
         switch(props.type){
             case 0:

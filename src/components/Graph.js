@@ -82,6 +82,7 @@ export default function Graph(props) {
   const classes = useStyles();
   const chartContainer = React.useRef(null);
   const [chartInstance, setChartInstance] = React.useState(null);
+  const [data, setData] = React.useState([]);
 
   const updateDataset = (datasetIndex, newData) => {
     chartInstance.data.datasets[datasetIndex].data = newData;
@@ -89,67 +90,61 @@ export default function Graph(props) {
   };
 
   const handleSubscriber = (type) => {
-    let data = [];
     switch(type){
         case 'all':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
             break;
         case 'studentPlan':
-            data = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+            setData([10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
             break;
         case 'standard':
-            data = [1, 100, -4, 3, 234];
+            setData([1, 100, -4, 3, 234]);
             break;
         case 'plus':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
             break;
         case 'family':
-            data = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+            setData([10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
             break;
         default:
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
     }
-    updateDataset(0, data);
   };
   const handleOrder = (type) => {
-    let data = [];
     switch(type){
         case 'today':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
             break;
         case 'seven':
-            data = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+            setData([10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
             break;
         case 'thirty':
-            data = [1, 100, -4, 3, 234];
+            setData([1, 100, -4, 3, 234]);
             break;
         case 'allTime':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
             break;
         default:
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
     }
-    updateDataset(0, data);
   };
   const handleWeight = (type) => {
-    let data = [];
     switch(type){
         case 'today':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([50, 51, 52, 24, 23, 2]);
             break;
         case 'seven':
-            data = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+            setData([10, 11, 12, 17, 18, 19]);
             break;
         case 'thirty':
-            data = [1, 100, -4, 3, 234];
+            setData([1, -2, -51, 234, 14, 12, 15]);
             break;
         case 'allTime':
-            data = [1, 2, 3, 4, 5, 6];
+            setData([0, 5, 92, 1, 1, 35]);
             break;
         default:
-            data = [1, 2, 3, 4, 5, 6];
+            setData([1, 2, 3, 4, 5, 6]);
     }
-    updateDataset(0, data);
   };
   const handleToggle = () => {
     switch(props.graph){
@@ -168,7 +163,13 @@ export default function Graph(props) {
       const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
       setChartInstance(newChartInstance);
     }
-  }, [chartContainer]);
+  }, [chartContainer, props.graph]);
+  React.useEffect(() => {
+      console.log(data)
+      if(chartInstance != null){
+        updateDataset(0, data);
+      }
+  }, [data])
   return (
     <div className={classes.wrapper}>
         <canvas ref={chartContainer} className={classes.graph}/>
