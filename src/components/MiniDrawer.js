@@ -94,11 +94,11 @@ export default function MiniDrawer() {
       case 0:
         return <Dashboard />;
       case 1:
-        return <DataTable option="User Table" type="user" rows={userRows} filler={''}/>;
+        return <DataTable option="User Table" type="user" rows={userRows} filler={'username'}/>;
       case 2:
-        return <DataTable option="Order Table" type="order" rows={orderRows} filler={''}/>;
+        return <DataTable option="Order Table" type="order" rows={orderRows} filler={'orderNumber'}/>;
       case 3:
-        return <DataTable option="Subscription Table" type="subscription" rows={subscriptionRows} filler={''}/>;
+        return <DataTable option="Subscription Table" type="subscription" rows={subscriptionRows} filler={'customerName'}/>;
       default:
         return <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
