@@ -7,7 +7,7 @@ const data = {
     labels: [new Date(2017, 8, 16, 15, 2, 5, 1), new Date(2017, 8, 17, 6, 11, 5, 2), new Date(2017, 8, 18)],
     datasets: [{
         fill: false,
-        label: 'Page Views',
+        label: 'Subscribers',
         data: [280, 250, 340],
         borderColor: '#01C9E1',
         backgroundColor: '#01C9E1',
