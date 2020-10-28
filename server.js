@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const User = require('./models/user');
-const Order = require('./models/order');
-const Subscription = require('./models/subscription');
+const User = require('./routes/usersRoute');
+const Order = require('./routes/ordersRoute');
+const Subscription = require('./routes/subscriptionsRoute');
 const app = express();
 require('dotenv').config()
 
@@ -18,10 +18,15 @@ mongoose.connect(process.env.DATABASE_URL, {
   useUnifiedTopology: true,
   useCreateIndex: true
 });
-const connection = mongoose.connection;
-connection.once("open", function() {
-    console.log("Connection with MongoDB was successful");
-});
+
+app.use('/user', User);
+app.use('/order', Order);
+app.use('/subscription', Subscription);
+//const connection = mongoose.connection;
+//connection.once("open", function() {
+//    console.log("Connection with MongoDB was successful");
+//});
+
 app.get('/ping', function(req, res) {
     console.log("pong");
     return res.send('pong');
