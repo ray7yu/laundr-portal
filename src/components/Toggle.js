@@ -13,7 +13,7 @@ export default function Toggle(props) {
     React.useEffect(() => {
         // console.log(props.start);
         setToggle(props.start);
-    }, [props.type])
+    }, [props.start, props.type])
     React.useEffect(() => {
         if(toggle != null){
             props.handleClick(toggle);

@@ -73,17 +73,19 @@ export const orderRows = [
     createOrder(89,23478,new Date(2020,9,21,1,59),new Date(2020,9,21,23,50),'Jayden-Lee Jordan','8893 Lakeview Street Lilburn, GA 30047','3.2','Paid'),
     createOrder(10,3243,new Date(2020,9,23,19,3),new Date(2020,9,23,21,26),'Geoffrey Merrill','12 Hillcrest Drive Mooresville, NC 28115','10','Paid'),
     createOrder(17,23487,new Date(2020,9,22,14,21),new Date(2020,9,23,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132','7','Paid'),
+    createOrder(17,23487,new Date(2020,9,28,14,21),new Date(2020,9,28,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132','7','Paid'),
 ];
 
 export const subscriptionRows = [
-    createSubscription('Shen-Jou','Student Plan',new Date(2020,9,6),new Date(2020,10,27),10,5,'Active'),
-    createSubscription('Vincent','Standard Plan',new Date(2020,9,4),new Date(2020,11,30),15,2,'Not'),
+    createSubscription('Shen-Jou','Student Plan',new Date(2020,7,6),new Date(2020,10,27),10,5,'Active'),
+    createSubscription('Vincent','Standard Plan',new Date(2020,7,4),new Date(2020,11,30),15,2,'Not'),
+    createSubscription('Charles','Standard Plan',new Date(2020,6,4),new Date(2020,10,30),7,5,'Active'),
     createSubscription('Raymond','Plus Plan',new Date(2010,0,26),new Date(2011,5,2),20,15,'Not'),
     createSubscription('Joseph','Family Plan',new Date(2018,2,21),new Date(2019,10,9),10,6,'Active'),
     createSubscription('Jayden','Student Plan',new Date(2015,7,22),new Date(2016,4,9),8,7,'Active'),
-    createSubscription('Neo Blake','Family Plan',new Date(2009,4,11),new Date(2015,9,16),9,5,'Active'),
+    createSubscription('Neo Blake','Family Plan',new Date(2015,4,11),new Date(2015,9,16),9,5,'Active'),
     createSubscription('Viaan Ferguson','Student Plan',new Date(2007,11,7),new Date(2014,1,8),10,5,'Not'),
-    createSubscription('Keeva Powers','Family Plan',new Date(2008,6,22),new Date(2017,4,22),12,0,'Active'),
-    createSubscription('Liya Dawe','Plus Plan',new Date(2004,1,20),new Date(2016,5,20),25,7,'Not'),
-    createSubscription('Bernadette Sloan','Student Plan',new Date(1998,1,20),new Date(2003,9,2),15,10,'Active'),
+    createSubscription('Keeva Powers','Family Plan',new Date(2013,6,22),new Date(2017,4,22),12,0,'Active'),
+    createSubscription('Liya Dawe','Plus Plan',new Date(2014,1,20),new Date(2016,5,20),25,7,'Not'),
+    createSubscription('Bernadette Sloan','Student Plan',new Date(2011,1,20),new Date(2003,9,2),15,10,'Active'),
 ];
