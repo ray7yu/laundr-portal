@@ -199,11 +199,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FAFAFA',
   },
   status: {
-    width: '80%',
     borderRadius: '25px',
     textAlign: 'center',
     padding: '3px',
     color: 'white',
+    fontSize: '13px',
   },
   paid: {
     backgroundColor: '#29CC97',

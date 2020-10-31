@@ -95,9 +95,8 @@ const filterData = (type, data) => {
             return data;
     }
 };
-const createData = (type, data) => {
+const createData = (type, data, isWeight) => {
     const currDate = new Date()
-    let startDate = new Date()
     let labels = []
     let newData = []
     let currTime;
@@ -120,6 +119,9 @@ const createData = (type, data) => {
                         if(itemDate.getFullYear() === currTime.getFullYear() && itemDate.getMonth() === currTime.getMonth() &&
                         itemDate.getDate() === currTime.getDate() && itemDate.getHours() === currTime.getHours())
                         {
+                            if(isWeight) {
+                                return ((accumulator + item.weight) * 100) / 100;
+                            }
                             return accumulator + 1;
                         }
                     }
@@ -134,9 +136,8 @@ const createData = (type, data) => {
             break;
         case 'seven':
             currTime = new Date();
-            currTime.setDate(currTime.getDate() - 7);
-            for(let i = 0; i <= 7; i++){
-                console.log(currTime.getTime())
+            currTime.setDate(currTime.getDate() - 6);
+            for(let i = 0; i <= 6; i++){
                 labels.push(new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate()));
                 const value = data.reduce((accumulator, item) => {
                     if(item.startDate){
@@ -151,13 +152,16 @@ const createData = (type, data) => {
                         if(itemDate.getFullYear() === currTime.getFullYear() && itemDate.getMonth() === currTime.getMonth() &&
                         itemDate.getDate() === currTime.getDate())
                         {
+                            if(isWeight){
+                                return ((accumulator + item.weight) * 100) / 100;
+                            }
                             return accumulator + 1;
                         }
                     }  
                     return accumulator;
                 }, 0)
                 newData.push({
-                    t: new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate(), currTime.getHours()),
+                    t: new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate()),
                     y: value
                 });
                 currTime.setDate(currTime.getDate() + 1);
@@ -165,8 +169,8 @@ const createData = (type, data) => {
             break;
         case 'thirty':
             currTime = new Date();
-            currTime.setDate(currTime.getDate() - 30);
-            for(let i = 0; i <= 30; i++){
+            currTime.setDate(currTime.getDate() - 29);
+            for(let i = 0; i <= 29; i++){
                 labels.push(new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate()))
                 const value = data.reduce((accumulator, item) => {
                     if(item.startDate){
@@ -181,13 +185,16 @@ const createData = (type, data) => {
                         if(itemDate.getFullYear() === currTime.getFullYear() && itemDate.getMonth() === currTime.getMonth() &&
                         itemDate.getDate() === currTime.getDate())
                         {
+                            if(isWeight){
+                                return ((accumulator + item.weight) * 100) / 100;
+                            }
                             return accumulator + 1;
                         }
                     }
                     return accumulator;
                 }, 0)
                 newData.push({
-                    t: new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate(), currTime.getHours()),
+                    t: new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate()),
                     y: value
                 });
                 currTime.setDate(currTime.getDate() + 1);
@@ -195,7 +202,7 @@ const createData = (type, data) => {
             break;
         default:
             //earliest date
-            if(data.length == 0){
+            if(data.length === 0){
                 return null;
             }
             
@@ -206,8 +213,9 @@ const createData = (type, data) => {
                     earliestDate = currentDate;
                 }
             }
+            console.log(earliestDate)
             currTime = new Date(earliestDate.getTime())
-            while(currTime.getFullYear() < currDate.getFullYear() || currTime.getFullYear() === currDate.getFullYear() && currTime.getMonth() < currDate.getMonth()){
+            while(currTime.getFullYear() < currDate.getFullYear() || (currTime.getFullYear() === currDate.getFullYear() && currTime.getMonth() <= currDate.getMonth())){
                 labels.push(new Date(currTime.getTime()))
                 const value = data.reduce((accumulator, item) => {
                     if(item.startDate){
@@ -220,6 +228,9 @@ const createData = (type, data) => {
                         const itemDate = item.deliveryTime;
                         if(itemDate.getFullYear() === currTime.getFullYear() && itemDate.getMonth() === currTime.getMonth())
                         {
+                            if(isWeight){
+                                return ((accumulator + item.weight) * 100) / 100;
+                            }
                             return accumulator + 1;
                         }
                     }
@@ -255,31 +266,31 @@ export default function Graph(props) {
     let newLabels;
     switch(type){
         case 'all':
-            [newData, newLabels] = createData('all', subscriptionRows);
+            [newData, newLabels] = createData('all', subscriptionRows, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'studentPlan':
             newData = filterData('studentPlan', subscriptionRows);
-            [newData, newLabels] = createData('studentPlan', newData);
+            [newData, newLabels] = createData('studentPlan', newData, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'standard':
             newData = filterData('standard', subscriptionRows);
-            [newData, newLabels] = createData('standard', newData);
+            [newData, newLabels] = createData('standard', newData, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'plus':
             newData = filterData('plus', subscriptionRows);
-            [newData, newLabels] = createData('plus', newData);
+            [newData, newLabels] = createData('plus', newData, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'family':
             newData = filterData('family', subscriptionRows);
-            [newData, newLabels] = createData('family', newData);
+            [newData, newLabels] = createData('family', newData, false);
             setData(newData);
             setLabels(newLabels)
             break;
@@ -293,21 +304,22 @@ export default function Graph(props) {
     let newLabels;
     switch(type){
         case 'today':
-            [newData, newLabels] = createData('today', orderRows);
+            [newData, newLabels] = createData('today', orderRows, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'seven':
-            [newData, newLabels] = createData('seven', orderRows);
+            [newData, newLabels] = createData('seven', orderRows, false);
             setData(newData);
             setLabels(newLabels)
+            break;
         case 'thirty':
-            [newData, newLabels] = createData('thirty', orderRows);
+            [newData, newLabels] = createData('thirty', orderRows, false);
             setData(newData);
             setLabels(newLabels)
             break;
         case 'allTime':
-            [newData, newLabels] = createData('all', orderRows);
+            [newData, newLabels] = createData('allTime', orderRows, false);
             setData(newData);
             setLabels(newLabels)
             break;
@@ -317,21 +329,31 @@ export default function Graph(props) {
   };
   const handleWeight = (type) => {
     setChartType('Weight (lb)');
+    let newData;
+    let newLabels;
     switch(type){
         case 'today':
-            setData([50, 51, 52, 24, 23, 2]);
+            [newData, newLabels] = createData('today', orderRows, true);
+            setData(newData);
+            setLabels(newLabels)
             break;
         case 'seven':
-            setData([10, 11, 12, 17, 18, 19]);
+            [newData, newLabels] = createData('seven', orderRows, true);
+            setData(newData);
+            setLabels(newLabels)
             break;
         case 'thirty':
-            setData([1, -2, -51, 234, 14, 12, 15]);
+            [newData, newLabels] = createData('thirty', orderRows, true);
+            setData(newData);
+            setLabels(newLabels)
             break;
         case 'allTime':
-            setData([0, 5, 92, 1, 1, 35]);
+            [newData, newLabels] = createData('allTime', orderRows, true);
+            setData(newData);
+            setLabels(newLabels)
             break;
         default:
-            setData([1, 2, 3, 4, 5, 6]);
+            return;
     }
   };
   const handleToggle = () => {
