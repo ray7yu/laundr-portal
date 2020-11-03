@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
 
-let url = process.env.DATABASEURL || "mongodb://localhost/laundrm"
+let url = process.env.DATABASEURL || "mongodb://localhost/laundr"
 
 mongoose.connect(url, {
   useNewUrlParser: true,

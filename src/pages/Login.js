@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 
 
@@ -54,12 +54,49 @@ const useStyles = makeStyles((theme) => ({
     marginStart: '5px',
     fontFamily: 'Mulish',
     fontWeight: '700',
+  },
+  errorMsg: {
+    color: 'red',
+    height: '10px',
   }
 }));
 
 export default function Login() {
+  let history = useHistory()
   const classes = useStyles();
-
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [errorMsg, setErrorMsg] = React.useState('');
+  const onChange = (event) => {
+    const {value, name} = event.target;
+    if (name === 'username'){
+      setUsername(value)
+    } else if (name === 'password'){
+      setPassword(value)
+    }
+  }
+  const onSubmit = (event) => {
+    event.preventDefault();
+    fetch('/api/authenticate', {
+        method: 'POST',
+        body: JSON.stringify({'username': username, 'password': password}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => {
+        if(res.status === 200) {
+            history.push('/');
+        } else {
+            const error = new Error(res.error);
+            throw error;
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        setErrorMsg('Incorrect username or password. Please try again!');
+    })
+  }
   return (
     <div className={classes.loginPage}>
       <Container component="main" maxWidth="xs" className={classes.login}>
@@ -73,6 +110,11 @@ export default function Login() {
               Laundr Admin Login
             </div>
           </div>
+          <div 
+            className={classes.errorMsg}
+          >
+            {errorMsg}
+          </div>
           <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
@@ -83,6 +125,7 @@ export default function Login() {
               label="Username"
               name="username"
               autoComplete="username"
+              onChange={onChange}
               autoFocus
             />
             <TextField
@@ -95,12 +138,14 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={onChange}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               className={classes.submit}
+              onClick={onSubmit}
             >
               Login
             </Button>

@@ -18,8 +18,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import Dashboard from './Dashboard'
 import DataTable from './DataTable'
+import {userRows, orderRows, subscriptionRows} from './DummyData'
 
-const drawerWidth = 225;
+const drawerWidth = 175;
 const barHeight = 75;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,10 +54,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   listItem: {
     backgroundColor: theme.palette.background.default,
+  },
+  listItemIcon: {
+    display: 'inline-block',
+    minWidth: '45px',
   },
   selected: {
     backgroundColor: 'lightgrey',
@@ -74,6 +79,17 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
     backgroundColor: theme.palette.background.default,
+  },
+  admin: {
+    fontSize: '2em',
+    marginBottom: '5px',
+    marginEnd: '15px',
+    fontFamily: 'Mulish',
+    fontWeight: '500',
+  },
+  title: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
   }
 }));
 
@@ -89,11 +105,11 @@ export default function MiniDrawer() {
       case 0:
         return <Dashboard />;
       case 1:
-        return <DataTable option="Users"/>;
+        return <DataTable option="User Table" type="user" rows={userRows} filler={'username'}/>;
       case 2:
-        return <DataTable option="Orders"/>;
+        return <DataTable option="Order Table" type="order" rows={orderRows} filler={'orderNumber'}/>;
       case 3:
-        return <DataTable option="Subscriptions"/>;
+        return <DataTable option="Subscription Table" type="subscription" rows={subscriptionRows} filler={'customerName'}/>;
       default:
         return <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -121,10 +137,13 @@ export default function MiniDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar disableGutters={true}>
-          <Typography variant="h6" noWrap>
+        <Toolbar disableGutters={true} className={classes.title}>
+          {/* <Typography variant="h6" noWrap>
             Portal
-          </Typography>
+          </Typography> */}
+          <div className={classes.admin}>
+            Portal
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -144,7 +163,7 @@ export default function MiniDrawer() {
             <ListItem button key={text} className={`${classes.listItem} 
                                                     ${index === item ? classes.selected : ""}`
                                                   } onClick={() => handleSelectItem(index)}>
-              <ListItemIcon >
+              <ListItemIcon className={classes.listItemIcon}>
                 {chooseIcon(index)}
               </ListItemIcon>
               <ListItemText primary={text} />

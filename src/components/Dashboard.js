@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import Graph from './Graph';
 const data = [
   {name: 'Page A', uv: 400, pv: 2400, amt: 2400},
   {name: 'Page B', uv: 300, pv: 2000, amt: 400},
@@ -8,14 +8,12 @@ const data = [
   {name: 'Page D', uv: 100, pv: 3000, amt: 6500},
 ];
 const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  dashboard: {
+    width: '100%',
     height: '90%',
-    flexShrink: 0,
-    width: `calc(100% - 225px)`
   },
   head: {
+    paddingTop: '10px',
     display: 'flex',
     justifyContent: 'space-evenly',
     flexDirection: 'row',
@@ -46,9 +44,10 @@ export default function Dashboard() {
       default:
         setGraph(0);
     }
+    
   }
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.dashboard}>
       <div className={classes.head}>
         {['Total Subscriber Count', 'Orders Processed', 'Total Laundry Processed'].map((text, index)=>(
           <div key={text} className={classes.button} onClick={() => handleSelectGraph(index)}>
@@ -57,13 +56,7 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-      <ResponsiveContainer width={'100%'} height={'90%'}>
-        <LineChart data={data}>
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-          <XAxis />
-          <YAxis />
-        </LineChart>
-      </ResponsiveContainer>
+       <Graph graph={graph}/>
     </div>
   );
 }

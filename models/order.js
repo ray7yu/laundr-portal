@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
-    orderNumber: {type: String, required: true, unique: true},
-    customerID: {type: String, required: true},
+    orderNumber: {type: Number, required: true, unique: true},
+    customerID: {type: Number, required: true},
     pickupTime: { type: Date, required: true},
     deliveryTime: {type: Date, required: true},
     driverName: {type: String, required: true},
