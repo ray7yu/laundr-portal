@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,59 +22,13 @@ function descendingComparator(a, b, orderBy) {
   if(a[orderBy] === undefined || b[orderBy] === undefined){
     return 0;
   }
-  if(orderBy === 'dateCreated' || orderBy === 'startDate' || orderBy === 'renewalDate'){
-    const dateA = a[orderBy].split('/');
-    const dateB = b[orderBy].split('/');
-    if (parseInt(dateB[2]) < parseInt(dateA[2])){
-      return -1;
-    } else if (parseInt(dateA[2]) < parseInt(dateB[2])){
-      return 1;
-    } else {
-      if (parseInt(dateB[0]) < parseInt(dateA[0])){
-        return -1;
-      } else if (parseInt(dateA[0]) < parseInt(dateB[0])){
-        return 1;
-      } else {
-        if (parseInt(dateB[1]) < parseInt(dateA[1])){
-          return -1;
-        } else if (parseInt(dateA[1]) < parseInt(dateB[1])){
-          return 1;
-        }
-      }
-    }
-  } else if(orderBy === 'pickupTime' || orderBy === 'deliveryTime'){
-    console.log(a[orderBy]);
-    const meridiemA = a[orderBy].slice(-2);
-    const meridiemB = b[orderBy].slice(-2);
-    let timeA = a[orderBy].slice(0, -2);
-    let timeB = b[orderBy].slice(0, -2);
-    //AM PM checks
-    if(timeA === '12'){
-      timeA = '0'
-    }
-    if(timeB === '12'){
-      timeB = '0'
-    }
-    if (meridiemB < meridiemA){
-      return -1;
-    } else if(meridiemA < meridiemB){
-      return 1;
-    } else {
-      if (parseInt(timeB) < parseInt(timeA)){
-        return -1;
-      } else if (parseInt(timeA) < parseInt(timeB)){
-        return 1;
-      }
-    }
-  } else {
-    if (b[orderBy] < a[orderBy]) {
-      //B is first
-      return -1;
-    }
-    if (b[orderBy] > a[orderBy]) {
-      //A is first
-      return 1;
-    }
+  if (b[orderBy] < a[orderBy]) {
+    //B is first
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    //A is first
+    return 1;
   }
   return 0;
 }
@@ -245,11 +199,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FAFAFA',
   },
   status: {
-    width: '80%',
     borderRadius: '25px',
     textAlign: 'center',
     padding: '3px',
     color: 'white',
+    fontSize: '13px',
   },
   paid: {
     backgroundColor: '#29CC97',
@@ -319,7 +273,7 @@ export default function DataTable(props) {
               {row.username}
             </TableCell>
             <TableCell align="left">{row.email}</TableCell>
-            <TableCell align="left">{row.dateCreated}</TableCell>
+            <TableCell align="left">{row.dateCreated.toString()}</TableCell>
           </>
         );
       case 'order':
@@ -329,8 +283,8 @@ export default function DataTable(props) {
               {row.orderNumber}
             </TableCell>
             <TableCell align="left">{row.customerID}</TableCell>
-            <TableCell align="left">{row.pickupTime}</TableCell>
-            <TableCell align="left">{row.deliveryTime}</TableCell>
+            <TableCell align="left">{row.pickupTime.toString()}</TableCell>
+            <TableCell align="left">{row.deliveryTime.toString()}</TableCell>
             <TableCell align="left">{row.driverName}</TableCell>
             <TableCell align="left">{row.address}</TableCell>
             <TableCell align="left">{row.weight}</TableCell>
@@ -348,8 +302,8 @@ export default function DataTable(props) {
               {row.customerName}
             </TableCell>
             <TableCell align="left">{row.subscriptionType}</TableCell>
-            <TableCell align="left">{row.startDate}</TableCell>
-            <TableCell align="left">{row.renewalDate}</TableCell>
+            <TableCell align="left">{row.startDate.toString()}</TableCell>
+            <TableCell align="left">{row.renewalDate.toString()}</TableCell>
             <TableCell align="left">{row.maxLbs}</TableCell>
             <TableCell align="left">{row.currentLbs}</TableCell>
             <TableCell align="left">

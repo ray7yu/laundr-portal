@@ -79,6 +79,17 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
     backgroundColor: theme.palette.background.default,
+  },
+  admin: {
+    fontSize: '2em',
+    marginBottom: '5px',
+    marginEnd: '15px',
+    fontFamily: 'Mulish',
+    fontWeight: '500',
+  },
+  title: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
   }
 }));
 
@@ -126,10 +137,13 @@ export default function MiniDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar disableGutters={true}>
-          <Typography variant="h6" noWrap>
+        <Toolbar disableGutters={true} className={classes.title}>
+          {/* <Typography variant="h6" noWrap>
             Portal
-          </Typography>
+          </Typography> */}
+          <div className={classes.admin}>
+            Portal
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
