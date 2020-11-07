@@ -100,6 +100,15 @@ export const orderRows = [
     createOrder(10,3243,new Date(2020,8,23,19,3),new Date(2020,8,23,21,26),'Geoffrey Merrill','12 Hillcrest Drive Mooresville, NC 28115',12,'Paid'),
     createOrder(17,23487,new Date(2020,8,22,14,21),new Date(2020,8,23,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132',3,'Paid'),
     createOrder(17,23487,new Date(2020,8,28,14,21),new Date(2020,8,28,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132',7,'Paid'),
+    createOrder(23,5321,new Date(2020,8,3,9,3),new Date(2020,10,3,10,2),'Tiffany Dowling','96 Old Oakland Street Mahwah, NJ 07430',12.3,'Paid'),
+    createOrder(5,23197,new Date(2020,8,24,4,0),new Date(2020,10,5,0,48),'Edison Dunn','7914 Orchard R. Ft. Mitchell, KY 41017',3,'Paid'),
+    createOrder(92,2334,new Date(2020,8,22,12,15),new Date(2020,10,3,15,5),'Edison Dunn','35 Euclid Lane Waterloon, IA 50701',1,'Paid'),
+    createOrder(23,23487,new Date(2020,8,14,0,12),new Date(2020,10,2,1,22),'Marian McNeill','6 North Highland Springfield Gardens, NY 11412',12.3,'Pending'),
+    createOrder(123,23489,new Date(2020,8,23,20,30),new Date(2020,10,1,21,5),'Rayan Bostock','795 Cemetery Street Oak Forest, IL 60452',34.7,'Pending'),
+    createOrder(89,23478,new Date(2020,8,21,1,59),new Date(2020,9,29,23,50),'Jayden-Lee Jordan','8893 Lakeview Street Lilburn, GA 30047',3.2,'Paid'),
+    createOrder(10,3243,new Date(2020,8,23,19,3),new Date(2020,10,5,21,26),'Geoffrey Merrill','12 Hillcrest Drive Mooresville, NC 28115',12,'Paid'),
+    createOrder(17,23487,new Date(2020,8,22,14,21),new Date(2020,9,23,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132',3,'Paid'),
+    createOrder(17,23487,new Date(2020,8,28,14,21),new Date(2020,10,2,4,2),'Mahir Raymond','8109 St. Paul Ave. Dallas, GA 30132',7,'Paid'),
 ];
 
 export const subscriptionRows = [

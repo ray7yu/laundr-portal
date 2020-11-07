@@ -12,11 +12,8 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import FilterListIcon from '@material-ui/icons/FilterList';
 
 function descendingComparator(a, b, orderBy) {
   if(a[orderBy] === undefined || b[orderBy] === undefined){
@@ -64,7 +61,7 @@ const useHeadStyles = makeStyles((theme) => ({
 }));
 function EnhancedTableHead(props) {
   const styles = useHeadStyles();
-  const { classes, order, orderBy, rowCount, onRequestSort } = props;
+  const { classes, order, orderBy, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -170,12 +167,6 @@ const EnhancedTableToolbar = (props) => {
       <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
         {props.option}
       </Typography>
-      <Tooltip title="Filter list">
-        <IconButton aria-label="filter list">
-          <FilterListIcon />
-        </IconButton>
-      </Tooltip>
-      
     </Toolbar>
   );
 };
@@ -217,10 +208,6 @@ const useStyles = makeStyles((theme) => ({
   inactive: {
     backgroundColor: '#FF5A39'
   },
-  // scrollable: {
-  //   maxHeight: 750,
-  //   overflow: 'auto',
-  // },
   visuallyHidden: {
     // border: 0,
     clip: 'rect(0 0 0 0)',
@@ -339,7 +326,6 @@ export default function DataTable(props) {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
               type={props.type}
             />
             <TableBody>

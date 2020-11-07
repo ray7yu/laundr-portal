@@ -15,6 +15,7 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {useHistory} from 'react-router-dom';
 
 import Dashboard from './Dashboard'
 import DataTable from './DataTable'
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: barHeight,
   },
   listHead: {
-    padding: '5px 15px 15px 15px',
+    padding: '15px 15px 15px 15px',
     borderStyle: 'none',
     backgroundColor: '#01C9E1',
     height: barHeight,
@@ -83,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
   admin: {
     fontSize: '2em',
     marginBottom: '5px',
+    marginTop: '15px',
     marginEnd: '15px',
     fontFamily: 'Mulish',
     fontWeight: '500',
@@ -94,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+  let history = useHistory()
   const classes = useStyles();
   // const theme = newTheme;
   const [item, setItem] = React.useState(0);
@@ -133,14 +136,14 @@ export default function MiniDrawer() {
         return null;
     }
   };
+  const logout = () => {
+    history.push('/login');
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar disableGutters={true} className={classes.title}>
-          {/* <Typography variant="h6" noWrap>
-            Portal
-          </Typography> */}
           <div className={classes.admin}>
             Portal
           </div>
@@ -169,7 +172,7 @@ export default function MiniDrawer() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-          <ListItem button key={"Logout"} className={classes.logout}>
+          <ListItem button key={"Logout"} className={classes.logout} onClick={() => logout()}>
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
