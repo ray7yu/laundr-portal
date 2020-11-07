@@ -1,13 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Graph from './Graph';
-const data = [
-  {name: 'Page A', uv: 400, pv: 2400, amt: 2400},
-  {name: 'Page B', uv: 300, pv: 2000, amt: 400},
-  {name: 'Page C', uv: 200, pv: 1600, amt: 1200},
-  {name: 'Page D', uv: 100, pv: 3000, amt: 6500},
-];
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   dashboard: {
     width: '100%',
     height: '90%',

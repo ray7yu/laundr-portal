@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Chartjs from 'chart.js';
 import Toggle from './Toggle';
 import {orderRows, subscriptionRows} from './DummyData';
-import { ListItem } from '@material-ui/core';
+
 const data = {
     // Labels should be Date objects
     labels: [new Date(2017, 7, 16, 15, 2, 5, 1), new Date(2017, 8, 17, 6, 11, 5, 2), new Date(2017, 8, 18)],
