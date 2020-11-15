@@ -16,7 +16,7 @@ const secret = process.env.SECRET;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -216,6 +216,6 @@ app.post('/api/authenticate', (req, res) => {
     })
 });
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/build/index.html'));
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 app.listen(process.env.PORT || 8080);
