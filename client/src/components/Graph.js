@@ -385,8 +385,9 @@ export default function Graph(props) {
     }, [data, chartType, labels]) 
     React.useEffect(() => {
         async function setData() {
-            const orderRes = await axios.get('http://localhost:3000/order');
-            const subscriptionRes = await axios.get('http://localhost:3000/subscription');
+            // localhost:3000/ 
+            const orderRes = await axios.get('https://laundr-portal.herokuapp.com/order');
+            const subscriptionRes = await axios.get('https://laundr-portal.herokuapp.com/subscription');
             orderRes.data.forEach((item, index, arr) => {
                 arr[index].deliveryTime = new Date(item.deliveryTime);
                 arr[index].pickupTime = new Date(item.pickupTime);

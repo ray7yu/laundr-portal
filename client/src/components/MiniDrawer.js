@@ -108,9 +108,9 @@ export default function MiniDrawer() {
   };
   React.useEffect(() => {
     async function setData() {
-        const userRes = await axios.get('http://localhost:3000/user');
-        const orderRes = await axios.get('http://localhost:3000/order');
-        const subscriptionRes = await axios.get('http://localhost:3000/subscription');
+        const userRes = await axios.get('https://laundr-portal.herokuapp.com/user');
+        const orderRes = await axios.get('https://laundr-portal.herokuapp.com/order');
+        const subscriptionRes = await axios.get('https://laundr-portal.herokuapp.com/subscription');
         userRes.data.forEach((item, index, arr) => {
           arr[index].dateCreated = new Date(item.dateCreated);
         });
