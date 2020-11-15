@@ -31,27 +31,120 @@ app.get('/ping', (req, res) => {
     console.log("pong");
     return res.send('pong');
 });
+//GET ALL routes
+app.get('/user', async (req, res) => {
+    await User.find({}, (err, data) => {
+        if (err)
+          return res.status(400).send({
+            message: err.message || "An unknown error occurred",
+          });
+        res.json(data);
+    });
+});
+app.get('/order', async (req, res) => {
+    await Order.find({}, (err, data) => {
+        if (err)
+          return res.status(400).send({
+            message: err.message || "An unknown error occurred",
+          });
+        res.json(data);
+    });
+});
+app.get('/subscription', async (req, res) => {
+    await Subscription.find({}, (err, data) => {
+        if (err)
+          return res.status(400).send({
+            message: err.message || "An unknown error occurred",
+          });
+        res.json(data);
+    });
+});
 //POST routes
-app.post('/user', (req, res) => {
-    console.log("TBD");
+app.post('/user', async (req, res) => {
+    const user = req.body;
+    if (!user) {
+        return res.status(400).send({
+        error: "User not found",
+        });
+    }
+    await new User(user).save()
+        .then((data) => {
+        res.json(data);
+        })
+        .catch((err) => {
+        res.status(400).send(err);
+        });
 });
-app.post('/order', (req, res) => {
-    console.log("TBD");
+app.post('/order', async (req, res) => {
+    const order = req.body;
+    if (!order) {
+        return res.status(400).send({
+        error: "Order not found",
+        });
+    }
+    await new Order(order).save()
+        .then((data) => {
+        res.json(data);
+        })
+        .catch((err) => {
+        res.status(400).send(err);
+        });
 });
-app.post('/subscription', (req, res) => {
-    console.log("TBD");
+app.post('/subscription', async (req, res) => {
+    const subscription = req.body;
+    if (!subscription) {
+        return res.status(400).send({
+        error: "Subscription not found",
+        });
+    }
+    await new Subscription(subscription).save()
+        .then((data) => {
+        res.json(data);
+        })
+        .catch((err) => {
+        res.status(400).send(err);
+        });
 });
-//GET routes
-app.get('/user', (req, res) => {
-    console.log("TBD");
+//DELETE routes
+app.delete('/user', async (req, res) => {
+    const username = req.body.username;
+    await User.deleteOne({ username: username }, (err) => {
+        if (err) {
+          return res.status(400).send({
+            error: err.message || "An unknown error occurred",
+          });
+        }
+        res.send({
+          message: username + " has been deleted successfully",
+        });
+    });
 });
-app.get('/order', (req, res) => {
-    console.log("TBD");
+app.delete('/order', async (req, res) => {
+    const orderNumber = req.body.orderNumber;
+    await Order.deleteOne({ orderNumber: orderNumber }, (err) => {
+        if (err) {
+          return res.status(400).send({
+            error: err.message || "An unknown error occurred",
+          });
+        }
+        res.send({
+          message: orderNumber + " has been deleted successfully",
+        });
+    });
 });
-app.get('/subscription', (req, res) => {
-    console.log("TBD");
+app.delete('/subscription', async (req, res) => {
+    const customerName = req.body.customerName;
+    await Subscription.deleteOne({ customerName: customerName }, (err) => {
+        if (err) {
+          return res.status(400).send({
+            error: err.message || "An unknown error occurred",
+          });
+        }
+        res.send({
+          message: customerName + " has been deleted successfully",
+        });
+    });
 });
-
 //Login
 app.get('/checkToken', withAuth, (req, res) => {
     res.sendStatus(200);

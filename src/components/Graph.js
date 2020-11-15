@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Chartjs from 'chart.js';
+import axios from 'axios';
 import Toggle from './Toggle';
-import {orderRows, subscriptionRows} from './DummyData';
+import {orderRows as orders, subscriptionRows as subscriptions} from './DummyData';
 
 const data = {
     // Labels should be Date objects
@@ -252,6 +253,8 @@ export default function Graph(props) {
   const [chartInstance, setChartInstance] = React.useState(null);
   const [data, setData] = React.useState([]);
   const [labels, setLabels] = React.useState([]);
+  const [orderRows, setOrderRows] = React.useState(orders);
+  const [subscriptionRows, setSubscriptionRows] = React.useState(subscriptions);
   const [chartType, setChartType] = React.useState('Subscribers')
 
   const updateGraph = (datasetIndex, newData, newLabels, chartType) => {
@@ -380,6 +383,23 @@ export default function Graph(props) {
             updateGraph(0, data, labels, chartType);
         }
     }, [data, chartType, labels]) 
+    React.useEffect(() => {
+        async function setData() {
+            const orderRes = await axios.get('http://localhost:3000/order');
+            const subscriptionRes = await axios.get('http://localhost:3000/subscription');
+            orderRes.data.forEach((item, index, arr) => {
+                arr[index].deliveryTime = new Date(item.deliveryTime);
+                arr[index].pickupTime = new Date(item.pickupTime);
+            });
+            subscriptionRes.data.forEach((item, index, arr) => {
+                arr[index].startDate = new Date(item.startDate);
+                arr[index].renewalDate = new Date(item.renewalDate);
+            });
+            setOrderRows(orderRes.data);
+            setSubscriptionRows(subscriptionRes.data);
+        }
+        setData();
+    }, [])
   return (
     <div className={classes.wrapper}>
         <canvas ref={chartContainer} className={classes.graph}/>
