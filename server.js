@@ -10,7 +10,7 @@ const Subscription = require('./models/subscription');
 const Admin = require('./models/admin');
 const withAuth = require('./middleware');
 const app = express();
-require('dotenv').config()
+//require('dotenv').config()
 
 const secret = process.env.SECRET;
 app.use(bodyParser.urlencoded({extended: false}));
