@@ -16,10 +16,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {useHistory} from 'react-router-dom';
-
+import axios from 'axios';
 import Dashboard from './Dashboard'
 import DataTable from './DataTable'
-import {userRows, orderRows, subscriptionRows} from './DummyData'
+import {userRows as users, orderRows as orders, subscriptionRows as subscriptions} from './DummyData'
 
 const drawerWidth = 175;
 const barHeight = 75;
@@ -100,9 +100,34 @@ export default function MiniDrawer() {
   const classes = useStyles();
   // const theme = newTheme;
   const [item, setItem] = React.useState(0);
+  const [userRows, setUserRows] = React.useState(users);
+  const [orderRows, setOrderRows] = React.useState(orders);
+  const [subscriptionRows, setSubscriptionRows] = React.useState(subscriptions);
   const handleSelectItem = (index) => {
     setItem(index);
   };
+  React.useEffect(() => {
+    async function setData() {
+        const userRes = await axios.get('http://localhost:3000/user');
+        const orderRes = await axios.get('http://localhost:3000/order');
+        const subscriptionRes = await axios.get('http://localhost:3000/subscription');
+        userRes.data.forEach((item, index, arr) => {
+          arr[index].dateCreated = new Date(item.dateCreated);
+        });
+        orderRes.data.forEach((item, index, arr) => {
+            arr[index].deliveryTime = new Date(item.deliveryTime);
+            arr[index].pickupTime = new Date(item.pickupTime);
+        });
+        subscriptionRes.data.forEach((item, index, arr) => {
+            arr[index].startDate = new Date(item.startDate);
+            arr[index].renewalDate = new Date(item.renewalDate);
+        });
+        setUserRows(userRes.data);
+        setOrderRows(orderRes.data);
+        setSubscriptionRows(subscriptionRes.data);
+    }
+    setData();
+}, [])
   const renderSwitch = (option) => {
     switch(option) {
       case 0:
