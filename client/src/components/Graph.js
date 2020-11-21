@@ -31,10 +31,11 @@ const chartConfig = {
                 distribution: 'linear',
                 // display: true,
                 // offset: true,
-                // scaleLabel: {
-                //     display: true,
-                //     // labelString: "Date",
-                // },
+                scaleLabel: {
+                    display: true,
+                    labelString: "Time",
+                    fontSize: "18",
+                },
                 ticks: {
                     major: {
                         enabled: true,
@@ -57,7 +58,8 @@ const chartConfig = {
                 display: true,
                 scaleLabel: {
                     display: true,
-                    // labelString: "Page Views",
+                    labelString: "",
+                    fontSize: "18",
                 }
             }]
         }
@@ -267,6 +269,7 @@ export default function Graph(props) {
     setChartType('Subscribers');
     let newData;
     let newLabels;
+    chartConfig.options.scales.yAxes[0].scaleLabel.labelString = "Subscribers"
     switch(type){
         case 'all':
             [newData, newLabels] = createData('all', subscriptionRows, false);
@@ -305,6 +308,7 @@ export default function Graph(props) {
     setChartType('Orders');
     let newData;
     let newLabels;
+    chartConfig.options.scales.yAxes[0].scaleLabel.labelString = "Orders"
     switch(type){
         case 'today':
             [newData, newLabels] = createData('today', orderRows, false);
@@ -334,6 +338,7 @@ export default function Graph(props) {
     setChartType('Weight (lb)');
     let newData;
     let newLabels;
+    chartConfig.options.scales.yAxes[0].scaleLabel.labelString = "Weight (lb)"
     switch(type){
         case 'today':
             [newData, newLabels] = createData('today', orderRows, true);

@@ -260,7 +260,9 @@ export default function DataTable(props) {
               {row.username}
             </TableCell>
             <TableCell align="left">{row.email}</TableCell>
-            <TableCell align="left">{row.dateCreated.toString()}</TableCell>
+            <TableCell align="left">
+              {`${row.dateCreated.toLocaleString('default', {month: 'long'})} ${row.dateCreated.getDate()}, ${row.dateCreated.getFullYear()}`}
+            </TableCell>
           </>
         );
       case 'order':
@@ -289,8 +291,12 @@ export default function DataTable(props) {
               {row.customerName}
             </TableCell>
             <TableCell align="left">{row.subscriptionType}</TableCell>
-            <TableCell align="left">{row.startDate.toString()}</TableCell>
-            <TableCell align="left">{row.renewalDate.toString()}</TableCell>
+            <TableCell align="left">
+              {`${row.startDate.toLocaleString('default', {month: 'long'})} ${row.startDate.getDate()}, ${row.startDate.getFullYear()}`}
+            </TableCell>
+            <TableCell align="left">
+              {`${row.renewalDate.toLocaleString('default', {month: 'long'})} ${row.renewalDate.getDate()}, ${row.renewalDate.getFullYear()}`}
+            </TableCell>
             <TableCell align="left">{row.maxLbs}</TableCell>
             <TableCell align="left">{row.currentLbs}</TableCell>
             <TableCell align="left">
