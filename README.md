@@ -9,6 +9,7 @@ implemented to protect confidential information.
 ## Tools
 React, HTML/CSS, Node.js, Express, and Mongoose were used to develop this app. </br>
 MongoDB Atlas hosts the database holding information. </br>
+Postman was used to test the Express API. </br>
 Material UI was used for faster development of front-end components, and Chart.js was used to make flexible and visually appealing graphs.
 
 ## Developers
