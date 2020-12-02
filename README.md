@@ -6,7 +6,7 @@ Collaborating with [Laundr](https://www.laundr.io/), this project's aim was to b
 to seamlessly view relevant data about their operations through a web browser. Various types of information can be viewed within the portal, including
 users, orders, and general Laundr subscriptions. Each of these are similarly displayed with several desired paramaters, such as weight information for a 
 current order or whether a subscription is still active at the moment. The data is stored on MongoDB atlas, and basic user authentication is 
-implemented to protect confidential information. React.js is the primary framework utilized to develop the front-end interfaces of the application.
+implemented to protect confidential information. 
 
 ## Tools
 React, HTML/CSS, Node.js, Express, and Mongoose were used to develop this app. </br>
