@@ -15,11 +15,13 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import Dashboard from './Dashboard'
 import DataTable from './DataTable'
+import {userRows as users, orderRows as orders, subscriptionRows as subscriptions} from './DummyData'
 
-const drawerWidth = 225;
+const drawerWidth = 175;
 const barHeight = 75;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: barHeight,
   },
   listHead: {
-    padding: '5px 15px 15px 15px',
+    padding: '15px 15px 15px 15px',
     borderStyle: 'none',
     backgroundColor: '#01C9E1',
     height: barHeight,
@@ -53,10 +55,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   listItem: {
     backgroundColor: theme.palette.background.default,
+  },
+  listItemIcon: {
+    display: 'inline-block',
+    minWidth: '45px',
   },
   selected: {
     backgroundColor: 'lightgrey',
@@ -74,26 +80,64 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: 0,
     backgroundColor: theme.palette.background.default,
+  },
+  admin: {
+    fontSize: '2em',
+    marginBottom: '5px',
+    marginTop: '15px',
+    marginEnd: '15px',
+    fontFamily: 'Mulish',
+    fontWeight: '500',
+  },
+  title: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
   }
 }));
 
 export default function MiniDrawer() {
+  let history = useHistory()
   const classes = useStyles();
   // const theme = newTheme;
   const [item, setItem] = React.useState(0);
+  const [userRows, setUserRows] = React.useState(users);
+  const [orderRows, setOrderRows] = React.useState(orders);
+  const [subscriptionRows, setSubscriptionRows] = React.useState(subscriptions);
   const handleSelectItem = (index) => {
     setItem(index);
   };
+  React.useEffect(() => {
+    async function setData() {
+        const userRes = await axios.get('https://laundr-portal.herokuapp.com/user');
+        const orderRes = await axios.get('https://laundr-portal.herokuapp.com/order');
+        const subscriptionRes = await axios.get('https://laundr-portal.herokuapp.com/subscription');
+        userRes.data.forEach((item, index, arr) => {
+          arr[index].dateCreated = new Date(item.dateCreated);
+        });
+        orderRes.data.forEach((item, index, arr) => {
+            arr[index].deliveryTime = new Date(item.deliveryTime);
+            arr[index].pickupTime = new Date(item.pickupTime);
+        });
+        subscriptionRes.data.forEach((item, index, arr) => {
+            arr[index].startDate = new Date(item.startDate);
+            arr[index].renewalDate = new Date(item.renewalDate);
+        });
+        setUserRows(userRes.data);
+        setOrderRows(orderRes.data);
+        setSubscriptionRows(subscriptionRes.data);
+    }
+    setData();
+}, [])
   const renderSwitch = (option) => {
     switch(option) {
       case 0:
         return <Dashboard />;
       case 1:
-        return <DataTable option="Users"/>;
+        return <DataTable option="User Table" type="user" rows={userRows} filler={'username'}/>;
       case 2:
-        return <DataTable option="Orders"/>;
+        return <DataTable option="Order Table" type="order" rows={orderRows} filler={'orderNumber'}/>;
       case 3:
-        return <DataTable option="Subscriptions"/>;
+        return <DataTable option="Subscription Table" type="subscription" rows={subscriptionRows} filler={'customerName'}/>;
       default:
         return <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -117,14 +161,17 @@ export default function MiniDrawer() {
         return null;
     }
   };
+  const logout = () => {
+    history.push('/login');
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar disableGutters={true}>
-          <Typography variant="h6" noWrap>
+        <Toolbar disableGutters={true} className={classes.title}>
+          <div className={classes.admin}>
             Portal
-          </Typography>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -144,13 +191,13 @@ export default function MiniDrawer() {
             <ListItem button key={text} className={`${classes.listItem} 
                                                     ${index === item ? classes.selected : ""}`
                                                   } onClick={() => handleSelectItem(index)}>
-              <ListItemIcon >
+              <ListItemIcon className={classes.listItemIcon}>
                 {chooseIcon(index)}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
-          <ListItem button key={"Logout"} className={classes.logout}>
+          <ListItem button key={"Logout"} className={classes.logout} onClick={() => logout()}>
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>

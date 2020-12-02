@@ -7,6 +7,6 @@ const SubscriptionSchema = new mongoose.Schema({
     renewalDate: {type: Date, required: true},
     maxLbs: {type: Number, required: true},
     currentLbs: { type: Number, required: true},
-    isActive: {type: Boolean, required: true}
+    isActive: {type: String, required: true}
 });
 module.exports = mongoose.model('Subscription', SubscriptionSchema);

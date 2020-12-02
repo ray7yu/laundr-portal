@@ -1,32 +1,16 @@
 # laundr-portal
+[Heroku link](https://laundr-portal.herokuapp.com/)
 
-## To-Do
-Back-end: Add handling in the server.js file in order to get and post data from the database </br>
-Front-end: Add graph functionality and dropdown to select different time periods. </br>
+## About
+Collaborating with [Laundr](https://www.laundr.io/), this project's aim was to build an administrative portal that allows Laundr employees
+to seamlessly view relevant data about their operations through a web browser. The data is stored on MongoDB atlas, and basic user authentication is 
+implemented to protect confidential information.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tools
+React, HTML/CSS, Node.js, Express, and Mongoose were used to develop this app. </br>
+MongoDB Atlas hosts the database holding information. </br>
+Postman was used to test the Express API. </br>
+Material UI was used for faster development of front-end components, and Chart.js was used to make flexible and visually appealing graphs.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Developers
+Raymond Yu, Joseph Morales, Shen-Jou Tsai, Jayden Jones, Vincent Concepcion
