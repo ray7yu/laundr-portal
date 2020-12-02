@@ -7,8 +7,12 @@ const cookieParser = require('cookie-parser');
 const User = require('./models/user');
 const Order = require('./models/order');
 const Subscription = require('./models/subscription');
+<<<<<<< HEAD
+const seedDB = require("./seeds"),
+=======
 const Admin = require('./models/admin');
 const withAuth = require('./middleware');
+>>>>>>> 444fc4f582f2784a5b94f810056826759908331c
 const app = express();
 //require('dotenv').config()
 
@@ -16,9 +20,17 @@ const secret = process.env.SECRET;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+<<<<<<< HEAD
+app.use(express.static(path.join(__dirname, 'build')));
+
+let url = process.env.DATABASEURL || "mongodb://localhost/laundrm"
+
+mongoose.connect(url, {
+=======
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 mongoose.connect(process.env.DATABASE_URL, {
+>>>>>>> 444fc4f582f2784a5b94f810056826759908331c
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
@@ -31,6 +43,11 @@ app.get('/ping', (req, res) => {
     console.log("pong");
     return res.send('pong');
 });
+<<<<<<< HEAD
+
+//seedDB()
+
+=======
 //GET ALL routes
 app.get('/user', async (req, res) => {
     await User.find({}, (err, data) => {
@@ -59,6 +76,7 @@ app.get('/subscription', async (req, res) => {
         res.json(data);
     });
 });
+>>>>>>> 444fc4f582f2784a5b94f810056826759908331c
 //POST routes
 app.post('/user', async (req, res) => {
     const user = req.body;
