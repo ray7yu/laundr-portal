@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const User = require('./models/user');
-const Order = require('./models/order');
+const Order = require('../../models/orer');
 const Subscription = require('./models/subscription');
-const Admin = require('./models/subscription');
-const {userRows, orderRows, subscriptionRows, admins} = require("./src/components/seedata");
+const {userRows, orderRows, subscriptionRows} = require("./src/components/seedata");
 
 
 let userSeeds = [
@@ -26,7 +25,7 @@ let userSeeds = [
 ]
 
 // REFACTOR WITH ASYNC/AWAIT LATER
-/*async*/ function seedDB() {
+/*async*/ function getData() {
     // await User.deleteMany({})
     // console.log("Users removed.")
 
@@ -100,20 +99,7 @@ let userSeeds = [
         })
     })
 
-
-      admins.forEach(function(seed) {
-        Admin.create(seed, function(err, sub) {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                sub.save();
-                console.log('Added admin')
-            }
-        })
-    })
-
 }
 
 
-module.exports = seedDB;
+module.exports = getData;

@@ -70,14 +70,17 @@ export default function Login() {
   const onChange = (event) => {
     const {value, name} = event.target;
     if (name === 'username'){
+      console.log(value)
       setUsername(value)
     } else if (name === 'password'){
+      console.log(value)
       setPassword(value)
     }
   }
   const onSubmit = (event) => {
     event.preventDefault();
-    fetch('/api/authenticate', {
+    
+    fetch('/authenticate', {
         method: 'POST',
         body: JSON.stringify({'username': username, 'password': password}),
         headers: {
@@ -85,11 +88,15 @@ export default function Login() {
         }
     })
     .then(res => {
-        if(res.status === 200) {
+      console.log(res.status)
+      if(res.status === 200) {
             history.push('/');
+
         } else {
+
             const error = new Error(res.error);
             throw error;
+
         }
     })
     .catch(err => {
