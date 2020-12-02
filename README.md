@@ -15,8 +15,4 @@ Postman was used to test the Express API. </br>
 Material UI was used for faster development of front-end components, and Chart.js was used to make flexible and visually appealing graphs.
 
 ## Development Team
-Project Master: Shen-Jou Tsai
-Scrum Master:   Raymond Yu
-Developers:     Joseph Morales
-                Jayden Jones
-                Vincent Concepcion
+Shen-Jou Tsai, Raymond Yu, Joseph Morales, Jayden Jones, Vincent Concepcion
