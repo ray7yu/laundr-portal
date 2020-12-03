@@ -36,7 +36,6 @@ to seamlessly view relevant data about their operations through a web browser
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
