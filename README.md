@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ray7yu/laundr-portal">
-    <img src="READMEIMG/logo.png" alt="Logo" width="300" height="300">
+    <img src="ReadmeIMG/logo.png" alt="Logo" width="300" height="300">
   </a>
    <h3 align="center">Laundr-Portal</h3>
   <p align="center">
@@ -105,14 +105,14 @@ Installation should be simple. You install some IDE (VS Code), clone the repo an
 <!-- USAGE EXAMPLES -->
 ## Usage
  1. Login Via the admin porta
- <img src="READMEIMG/login.png" alt="Logo" width="206" height="366">
+ <img src="ReadmeIMG/login.png" alt="Logo" width="206" height="366">
  
 2. Once on the dashboard select which table you would like to view.
- <img src="READMEIMG/dashboard.png" alt="Logo" width="206" height="366">
+ <img src="ReadmeIMG/dashboard.png" alt="Logo" width="206" height="366">
  
  3. Use the different filters to search through the database.
-  <img src="READMEIMG/order table.png" alt="Logo" width="206" height="366">
-  <img src="READMEIMG/user table.png" alt="Logo" width="206" height="366">
+  <img src="ReadmeIMG/order table.png" alt="Logo" width="206" height="366">
+  <img src="ReadmeIMG/user table.png" alt="Logo" width="206" height="366">
   
  
 
