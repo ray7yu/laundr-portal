@@ -1,6 +1,3 @@
-# laundr-portal
-[Heroku link](https://laundr-portal.herokuapp.com/)
-
 
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
@@ -33,9 +30,10 @@
   <a href="https://github.com/The-Game-Lab/ThermoApplication">
     <img src="READMEIMG/logo.png" alt="Logo" width="300" height="300">
   </a>
-   <h3 align="center">ThermoApplication</h3>
+   <h3 align="center">Laundr-Portal</h3>
   <p align="center">
-  This application allows you to calculate thermodynamic properties
+  Administrative portal that allows Laundr employees
+to seamlessly view relevant data about their operations through a web browser
     <br />
     <a href="https://github.com/The-Game_Lab/ThermoApplication"><strong>Explore the docs »</strong></a>
     <br />
@@ -176,7 +174,8 @@ Vincent Concepcion -
 [![LinkedIn][linkedin-shield]][linkedin-url-paul]
 
 
-
+# laundr-portal
+[Heroku link](https://laundr-portal.herokuapp.com/)
 Project Link: [https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
 
 
