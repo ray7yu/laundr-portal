@@ -51,17 +51,15 @@ to seamlessly view relevant data about their operations through a web browser
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
-
-
 
 <!-- ABOUT THE PROJECT --> 
 ## About The Project
@@ -74,81 +72,40 @@ implemented to protect confidential information.
 
 
 ### Built With
-* [React](https://developer.android.com/)
-* [HTML/CSS](https://www.oracle.com/java/)
-* [Node.js](https://www.oracle.com/java/)
-* [Express](https://www.oracle.com/java/)
-* [Mongoose](https://www.oracle.com/java/)
-
-* [MongoDB Atlas](https://www.oracle.com/java/)
-
-* [Postman](https://www.oracle.com/java/)
-
-* [Material UI](https://www.oracle.com/java/)
-* [Chart.Js](https://www.oracle.com/java/)
+* [React](https://reactjs.org/)
+* [HTML/CSS](google.com)
+* [Node.js](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [Mongoose](https://mongoosejs.com/)
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+* [Postman](https://www.postman.com/)
+* [Material UI](https://material-ui.com/)
+* [Chart.Js](https://www.chartjs.org/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Installation should be simple. You install android studio, clone the repo and install the necessary packages. 
+Installation should be simple. You install some IDE (VS Code), clone the repo and install the necessary packages. 
 
 ### Prerequisites
-1. Download and install Android Studio
+1. Download any IDE, For this project VS Code was used
 
 ### Installation
 
 1. Clone the repo
 ```sh
-git clone https://github.com/The-Game-Lab/ThermoApplication.git
+git clone https://github.com/ray7yu/laundr-portal.git
 ```
 2. Install packages
 ```sh
-      1. Start Android Studio.
-      2. To open SDK Manager, do any of the these:
-        - On Android Studio landing page, select Configure > SDK Manager.
-
-        - From your Android Studio application toolbar, select Tools > Android > SDK Manager.
-
-        - From your Android Studio application toolbar, click SDK Manager.
+      1. Open a terminal to the newly created directory.
+      2. npm -i
 ```
-3. In the Default Settings dialog box, click these tabs to install Android SDK platform packages and developer tools.
-```sh
-        1. SDK Platforms: Select the latest Android SDK package.
-
-        2. SDK Tools: Select these Android SDK tools:
-
-          - Android SDK Build-Tools
-
-          - NDK (Side by side)
-
-          - Android SDK Platform-Tools
-
-          - Android SDK Tools
-```
-4. Click Apply. 
-```sh
-Android Studio starts installing the selected packages and tools on your computer. After the installation is completed, the Status of the installed packages and tools changes from Not installed to Installed.
-```
-5. Click OK.
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-1. Select Type 
- <img src="READMEIMG/SelectType.png" alt="Logo" width="206" height="366">
- 
-2. Select two properties from the drop-down menu.
- <img src="READMEIMG/SelectInput.png" alt="Logo" width="206" height="366">
- 
- 3. Select Units for each property.
-  <img src="READMEIMG/SelectUnit.png" alt="Logo" width="206" height="366">
   
- 4. Input Values
-  <img src="READMEIMG/TypeInput.png" alt="Logo" width="206" height="366">
-  
- 5. Select Checkbox to calculate Properties
+ 
 
 
 <!-- LICENSE -->
@@ -176,7 +133,7 @@ Vincent Concepcion -
 
 # laundr-portal
 [Heroku link](https://laundr-portal.herokuapp.com/)
-Project Link: [https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
+[Project Link][https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
 
 
 
@@ -196,14 +153,14 @@ Project Link: [https://github.com/ray7yu/laundr-portal](https://github.com/ray7y
 [linkedin-url-joseph]: https://www.linkedin.com/in/josephmorales007/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-jayden]: https://www.linkedin.com/in/tyler-allen-78bb08158/
+[linkedin-url-jayden]: 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-grace]: https://www.linkedin.com/in/tyler-allen-78bb08158/
+[linkedin-url-grace]: 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-paul]: https://www.linkedin.com/in/tyler-allen-78bb08158/
+[linkedin-url-paul]: 
 
-[issues-shield]: https://img.shields.io/github/issues/The-Game-Lab/ThermoApplication.svg?style=flat-square
-[issues-url]: https://github.com/The-Game-Lab/ThermoApplication/issues
+[issues-shield]: https://img.shields.io/github/issues/laundr-portal.svg?style=flat-square
+[issues-url]: https://github.com/ray7yu/laundr-portal/issues
 [product-screenshot]: images/screenshot.png
