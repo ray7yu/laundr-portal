@@ -93,49 +93,52 @@ npm install
 
 1. Base Features
 ```sh
-Main Feature 1: Dashboard that contains graphs to visualize data along with filters
-Main Feature 2: Tables that display the entries and their respective attributes
-MongoDB Atlas that stores the relevant information
-User authentication for login
-Side menu navigation (default should be dashboard)
-Logout feature
-Dropdown menus on each table to select how much 
-Deployment on Heroku
-API that allows requests to get all, add, or delete from a database
+-Dashboard that contains graphs to visualize data along with filters
+-Tables that display the entries and their respective attributes
+-MongoDB Atlas that stores the relevant information
+-User authentication for login
+-Side menu navigation (default should be dashboard)
+-Logout feature
+-Dropdown menus on each table to select how much 
+-Deployment on Heroku
+-API that allows requests to get all, add, or delete from a database
 ```
 
 2. Pages
 ```sh
 1. Dashboard with 3 tabbed Line Graphs 
-Total subscriber count (All / Student plan / Standard / Plus / Family)
-Orders processed (today / last 7 days / last 30 days / all time)
-Total LBS of laundry processed (today / last 7 days / last 30 days / all time)
+-Total subscriber count (All / Student plan / Standard / Plus / Family)
+-Orders processed (today / last 7 days / last 30 days / all time)
+-Total LBS of laundry processed (today / last 7 days / last 30 days / all time)
+
 2. Users table
-User Name 
-Email
-Account Created Date
+-User Name 
+-Email
+-Account Created Date
+
 3. Orders table
-Order Number
-Customer Name
-Pickup Time
-Delivery Time
-Driver Name
-Customer Address
-Order Status
-Order Weight
+-Order Number
+-Customer Name
+-Pickup Time
+-Delivery Time
+-Driver Name
+-Customer Address
+-Order Status
+-Order Weight
+
 4. Subscriptions table
-Customer Name
-Subscription Type
-Start Date
-Renewal Date
-Max Lbs
-Current Lbs
-IsActive
+-Customer Name
+-Subscription Type
+-Start Date
+-Renewal Date
+-Max Lbs
+-Current Lbs
+-IsActive
 ```
 3. Additional Features
 ```sh
-Option to condense entries on each table
-Aesthetically pleasing UI that follows Laundr’s style guidelines 
+-Option to condense entries on each table
+-Aesthetically pleasing UI that follows Laundr’s style guidelines 
 ```
 
 
