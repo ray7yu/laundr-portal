@@ -27,7 +27,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/The-Game-Lab/ThermoApplication">
+  <a href="https://github.com/ray7yu/laundr-portal">
     <img src="READMEIMG/logo.png" alt="Logo" width="300" height="300">
   </a>
    <h3 align="center">Laundr-Portal</h3>
@@ -35,13 +35,13 @@
   Administrative portal that allows Laundr employees
 to seamlessly view relevant data about their operations through a web browser
     <br />
-    <a href="https://github.com/The-Game_Lab/ThermoApplication"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ray7yu/laundr-portal"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/The-Game-Lab/ThermoApplication/issues">Report Bug</a>
+    <a href="https://github.com/ray7yu/laundr-portal/issues">Report Bug</a>
     ·
-    <a href="https://github.com/The-Game-Lab/ThermoApplication/issues">Request Feature</a>
+    <a href="https://github.com/ray7yu/laundr-portal/issues">Request Feature</a>
   </p>
 </p>
 
@@ -68,7 +68,7 @@ to seamlessly view relevant data about their operations through a web browser. V
 users, orders, and general Laundr subscriptions. Each of these are similarly displayed with several desired paramaters, such as weight information for a 
 current order or whether a subscription is still active at the moment. The data is stored on MongoDB atlas, and basic user authentication is 
 implemented to protect confidential information. 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 
 ### Built With
@@ -94,16 +94,25 @@ Installation should be simple. You install some IDE (VS Code), clone the repo an
 
 1. Clone the repo
 ```sh
-git clone https://github.com/ray7yu/laundr-portal.git
+    git clone https://github.com/ray7yu/laundr-portal.git
 ```
-2. Install packages
+2. Open a terminal to the newly created directory.
+3. Install packages
 ```sh
-      1. Open a terminal to the newly created directory.
-      2. npm -i
+    npm -i
 ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+ 1. Login Via the admin porta
+ <img src="READMEIMG/login.png" alt="Logo" width="206" height="366">
+ 
+2. Once on the dashboard select which table you would like to view.
+ <img src="READMEIMG/dashboard.png" alt="Logo" width="206" height="366">
+ 
+ 3. Use the different filters to search through the database.
+  <img src="READMEIMG/order table.png" alt="Logo" width="206" height="366">
+  <img src="READMEIMG/user table.png" alt="Logo" width="206" height="366">
   
  
 
@@ -133,7 +142,7 @@ Vincent Concepcion -
 
 # laundr-portal
 [Heroku link](https://laundr-portal.herokuapp.com/)
-[Project Link][https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
+[https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
 
 
 
