@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ray7yu/laundr-portal">
-    <img src="ReadmeIMG/logo.png" alt="Logo" width="200" height="100">
+    <img src="ReadmeIMG/logo.png" alt="Logo" width="300" height="100">
   </a>
    <h3 align="center">Laundr-Portal</h3>
   <p align="center">
@@ -85,10 +85,10 @@ implemented to protect confidential information.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Installation should be simple. You install some IDE (VS Code), clone the repo and install the necessary packages. 
+Installation should be simple. You install some IDE, clone the repo and install the necessary packages. 
 
 ### Prerequisites
-1. Download any IDE, For this project VS Code was used
+1. Download any IDE
 
 ### Installation
 
@@ -142,6 +142,7 @@ Vincent Concepcion -
 
 # laundr-portal
 [Heroku link](https://laundr-portal.herokuapp.com/)
+
 [https://github.com/ray7yu/laundr-portal](https://github.com/ray7yu/laundr-portal.git)
 
 
