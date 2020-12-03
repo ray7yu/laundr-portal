@@ -1,23 +1,3 @@
-
-<!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
-*** an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Issues][issues-shield]][issues-url]
 
 
@@ -63,13 +43,8 @@ to seamlessly view relevant data about their operations through a web browser
 
 <!-- ABOUT THE PROJECT --> 
 ## About The Project
-Collaborating with [Laundr](https://www.laundr.io/), this project's aim was to build an administrative portal that allows Laundr employees
-to seamlessly view relevant data about their operations through a web browser. Various types of information can be viewed within the portal, including
-users, orders, and general Laundr subscriptions. Each of these are similarly displayed with several desired paramaters, such as weight information for a 
-current order or whether a subscription is still active at the moment. The data is stored on MongoDB atlas, and basic user authentication is 
-implemented to protect confidential information. 
 
-
+The goal of the project was to build and deploy a portal that allows the client, a [Laundr](https://www.laundr.io/) administrator, to seamlessly view relevant data about the operations of Laundr through a browser. The main pages, Users, Orders, and Subscriptions, are tables in which the columns are the attributes and the rows are the entries from the MongoDB database. The dashboard, which is the default page, includes 3 graphs that show subscriber count, orders processed, and weight processed. These graphs also contain filters that allow the administrator specify how they wish to view them.
 
 ### Built With
 * [React](https://reactjs.org/)
@@ -104,17 +79,65 @@ npm install
 
 <!-- USAGE EXAMPLES -->
 ## Usage
- 1. Login Via the admin porta
+ 1. Log in via the admin portal
  <img src="ReadmeIMG/login.png" alt="Logo" width="600" height="300">
  
-2. Once on the dashboard select which table you would like to view.
+2. Once on the dashboard, select which tab you would like to view
  <img src="ReadmeIMG/dashboard.png" alt="Logo" width="600" height="300">
  
- 3. Use the different filters to search through the database.
+ 3. Using the different filters options you can search through each table to view customer data.
   <img src="ReadmeIMG/order table.png" alt="Logo" width="600" height="300">
   <img src="ReadmeIMG/user table.png" alt="Logo" width="600" height="300">
   
- 
+ ##  Project Features
+
+1. Base Features
+```sh
+Main Feature 1: Dashboard that contains graphs to visualize data along with filters
+Main Feature 2: Tables that display the entries and their respective attributes
+MongoDB Atlas that stores the relevant information
+User authentication for login
+Side menu navigation (default should be dashboard)
+Logout feature
+Dropdown menus on each table to select how much 
+Deployment on Heroku
+API that allows requests to get all, add, or delete from a database
+```
+
+2. Pages
+```sh
+1. Dashboard with 3 tabbed Line Graphs 
+Total subscriber count (All / Student plan / Standard / Plus / Family)
+Orders processed (today / last 7 days / last 30 days / all time)
+Total LBS of laundry processed (today / last 7 days / last 30 days / all time)
+2. Users table
+User Name 
+Email
+Account Created Date
+3. Orders table
+Order Number
+Customer Name
+Pickup Time
+Delivery Time
+Driver Name
+Customer Address
+Order Status
+Order Weight
+4. Subscriptions table
+Customer Name
+Subscription Type
+Start Date
+Renewal Date
+Max Lbs
+Current Lbs
+IsActive
+```
+3. Additional Features
+```sh
+Option to condense entries on each table
+Aesthetically pleasing UI that follows Laundr’s style guidelines 
+```
+
 
 
 <!-- LICENSE -->
@@ -124,20 +147,20 @@ npm install
 
 <!-- CONTACT -->
 ## Contact
-Raymond Yu -  
+Raymond Yu - wrg7yu@gmail.com 
 [![LinkedIn][linkedin-shield]][linkedin-url-raymond]
 
 Joseph Morales - JosephMorales007@Yahoo.com
 [![LinkedIn][linkedin-shield]][linkedin-url-joseph]
 
-Shen-Jou Tsai - 
+Shen-Jou Tsai - shenjou.tsai@ufl.edu
 [![LinkedIn][linkedin-shield]][linkedin-url-grace]
 
-Jayden Jones -
+Jayden Jones - jayden.jones@ufl.edu
 [![LinkedIn][linkedin-shield]][linkedin-url-jayden]
 
-Vincent Concepcion -
-[![LinkedIn][linkedin-shield]][linkedin-url-paul]
+Vincent Concepcion - vconcepcion@ufl.edu
+[![LinkedIn][linkedin-shield]][linkedin-url-vincent]
 
 
 # laundr-portal
@@ -163,13 +186,13 @@ Vincent Concepcion -
 [linkedin-url-joseph]: https://www.linkedin.com/in/josephmorales007/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-jayden]: 
+[linkedin-url-jayden]: https://www.linkedin.com/in/jayden-jones-6b66141b5/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-grace]: 
+[linkedin-url-grace]: https://www.linkedin.com/in/shen-jou-tsai-01a13a158/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url-paul]: 
+[linkedin-url-vincent]: https://www.linkedin.com/in/vincent-concepcion-34b0811a5/
 
 [issues-shield]: https://img.shields.io/github/issues/laundr-portal.svg?style=flat-square
 [issues-url]: https://github.com/ray7yu/laundr-portal/issues
