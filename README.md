@@ -84,7 +84,7 @@ npm install
 2. Once on the dashboard, select which tab you would like to view
  <img src="ReadmeIMG/dashboard.png" alt="Logo" width="600" height="300">
  
- 3. Using the different filters options you can search through each table to view customer data.
+ 3. Using the different filter options you can search through each table to view customer data.
   <img src="ReadmeIMG/order table.png" alt="Logo" width="600" height="300">
   <img src="ReadmeIMG/user table.png" alt="Logo" width="600" height="300">
   
