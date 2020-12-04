@@ -176,6 +176,7 @@ Vincent Concepcion - vconcepcion@ufl.edu
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [University of Florida](https://www.ufl.edu/)
+* [Laundr](https://www.laundr.io/)
 
 
 
