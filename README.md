@@ -54,7 +54,8 @@ The goal of the project was to build and deploy a portal that allows the client,
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 * [Postman](https://www.postman.com/)
 * [Material UI](https://material-ui.com/)
-* [Chart.Js](https://www.chartjs.org/)
+* [React Router](https://reactrouter.com/)
+* [JSON Web Token](https://jwt.io/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
